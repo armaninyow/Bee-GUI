@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BeehiveBlock;
 import net.minecraft.block.entity.BeehiveBlockEntity;
-import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -39,17 +38,17 @@ public class BeeGUI implements ModInitializer {
 			BeeGuiPacket.sendToClient(player, beehive, state, pos);
 		});
 
-		// Initial open on right-click
+		// Initial open on shift+right-click
 		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
 			if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
-
-			var stack = player.getStackInHand(hand);
-			if (stack.isOf(Items.SHEARS) || stack.isOf(Items.GLASS_BOTTLE)) return ActionResult.PASS;
+			if (!player.isSneaking()) return ActionResult.PASS;
 
 			var pos   = hitResult.getBlockPos();
 			var state = world.getBlockState(pos);
 			if (!(state.getBlock() instanceof BeehiveBlock)) return ActionResult.PASS;
-			if (world.isClient()) return ActionResult.PASS;
+
+			// Return SUCCESS on both client and server to cancel block placement
+			if (world.isClient()) return ActionResult.SUCCESS;
 
 			var blockEntity = world.getBlockEntity(pos);
 			if (!(blockEntity instanceof BeehiveBlockEntity beehive)) return ActionResult.PASS;

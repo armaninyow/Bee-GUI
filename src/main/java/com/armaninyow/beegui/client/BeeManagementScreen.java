@@ -1,6 +1,7 @@
 package com.armaninyow.beegui.client;
 
 import com.armaninyow.beegui.BeeGUI;
+import com.armaninyow.beegui.BeeGuiScreenTracker;
 import com.armaninyow.beegui.network.BeeGuiPacket;
 import com.armaninyow.beegui.network.BeeGuiRefreshPacket;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
@@ -115,6 +116,13 @@ public class BeeManagementScreen extends Screen {
 		super.init();
 		this.guiLeft = (this.width  - PNG_WIDTH)  / 2;
 		this.guiTop  = (this.height - PNG_HEIGHT) / 2;
+		BeeGuiScreenTracker.openScreenPositions.add(pos);
+	}
+
+	@Override
+	public void removed() {
+		super.removed();
+		BeeGuiScreenTracker.openScreenPositions.remove(pos);
 	}
 
 	@Override
@@ -260,14 +268,14 @@ public class BeeManagementScreen extends Screen {
 	private void renderBeeTooltip(DrawContext context, BeeGuiPacket.BeeInfo bee, int mouseX, int mouseY) {
 		List<Text> lines = new ArrayList<>();
 		lines.add(Text.literal(bee.name() + (bee.hasNectar() ? " (with Nectar)" : "")));
-		lines.add(Text.literal("HP: " + Math.round(bee.health()) + "/" + Math.round(bee.maxHealth())).styled(s -> s.withColor(0xA8A8A8)));
+		lines.add(Text.literal("HP: " + Math.round(bee.health()) + "/" + Math.round(bee.maxHealth())).styled(s -> s.withColor(0x545454).withShadowColor(0xFF151515)));
 		context.drawTooltip(this.textRenderer, lines, mouseX, mouseY);
 	}
 
 	private void renderHoneyTooltip(DrawContext context, int mouseX, int mouseY) {
 		List<Text> lines = new ArrayList<>();
 		lines.add(Text.literal("Honey"));
-		lines.add(Text.literal("Level: " + honeyLevel + "/5").styled(s -> s.withColor(0xA8A8A8)));
+		lines.add(Text.literal("Level: " + honeyLevel + "/5").styled(s -> s.withColor(0x545454).withShadowColor(0xFF151515)));
 		context.drawTooltip(this.textRenderer, lines, mouseX, mouseY);
 	}
 }
