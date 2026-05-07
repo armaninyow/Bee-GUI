@@ -19,6 +19,11 @@ If you encounter bugs or wish to contribute:
 <details>
   <summary></summary>
    
+### 3.1.0—1.21.x
+* Split 1.21.5-1.21.11 into three separate version ranges to account for API differences across minor versions
+* Fixed a crash on 1.21.2–1.21.3 caused by a styling API that was not available until 1.21.4
+* Fixed a crash on 1.21.5 caused by a rendering API that was not available until 1.21.6
+* Fixed a crash on 1.21.6–1.21.8 caused by a rendering API that was not available until 1.21.9
 ### 3.0.0—1.21.x
 * Added multi-version support covering Minecraft 1.21 through 1.21.11
 * Replaced flat bee PNG icons with live 3D paper doll rendering, similar to how your character appears in the inventory screen
