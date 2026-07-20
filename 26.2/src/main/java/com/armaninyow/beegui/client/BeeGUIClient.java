@@ -16,7 +16,7 @@ public class BeeGUIClient implements ClientModInitializer {
                 if (screen != null && screen.getPos().equals(payload.pos())) {
                     screen.updateData(payload.isHive(), payload.honeyLevel(), payload.bees());
                 } else {
-                    client.setScreenAndShow(new BeeManagementScreen(
+                    client.gui.setScreen(new BeeManagementScreen(
                         payload.isHive(),
                         payload.honeyLevel(),
                         payload.bees(),
