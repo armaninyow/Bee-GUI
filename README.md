@@ -19,6 +19,8 @@ If you encounter bugs or wish to contribute:
 <details>
   <summary></summary>
    
+### 4.1.1—26.x
+* Fixed the brief black flash when opening the bee hive/nest GUI
 ### 4.1.0—26.x
 * Added support for Minecraft 26.2 (Known limitation: a brief black flash may appear for a moment when opening the bee hive/nest GUI)
 ### 4.0.0—26.x
