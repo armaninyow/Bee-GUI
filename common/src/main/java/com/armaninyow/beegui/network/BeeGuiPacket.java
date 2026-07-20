@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.ArrayList;
 import java.util.List;
 
-// 26.1.x
 public class BeeGuiPacket {
 
     public static final Identifier OPEN_GUI_ID = Identifier.fromNamespaceAndPath(BeeGUI.MOD_ID, "open_gui");

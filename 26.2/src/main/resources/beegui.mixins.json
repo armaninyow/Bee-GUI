@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.armaninyow.beegui.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"BeehiveBlockEntityMixin",
+		"BeehiveBlockEntityAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// 26.1.x
 public class BeeGUI implements ModInitializer {
     public static final String MOD_ID = "beegui";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);

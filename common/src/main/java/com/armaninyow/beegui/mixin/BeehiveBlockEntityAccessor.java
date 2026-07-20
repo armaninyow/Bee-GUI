@@ -6,10 +6,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 import java.util.List;
 
-/**
- * Exposes BeehiveBlockEntity.getBees() (private) which returns
- * List<Occupant> — the public Occupant record we can read safely.
- */
 @Mixin(BeehiveBlockEntity.class)
 public interface BeehiveBlockEntityAccessor {
 
